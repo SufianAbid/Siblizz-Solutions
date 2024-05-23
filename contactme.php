@@ -1,5 +1,9 @@
+
 <?php   
-    require("./mailing/mailfunction.php");
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require("./mailing/mailfunction.php");
 
     $name = $_POST["name"];
     $phone = $_POST['phone'];
@@ -8,7 +12,7 @@
 
     $body = "<ul><li>Name: ".$name."</li><li>Phone: ".$phone."</li><li>Email: ".$email."</li><li>Message: ".$message."</li></ul>";
 
-    $status = mailfunction("", "Company", $body); //reciever
+    $status = mailfunction(" siblizzsolution@gmail.com", "Company", $body); //reciever
     if($status)
         echo '<center><h1>Thanks! We will contact you soon.</h1></center>';
     else
