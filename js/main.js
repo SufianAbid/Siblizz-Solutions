@@ -53,6 +53,7 @@ $(document).ready(function(){
         responsive: { 0: {items: 1}, 576: {items: 2}, 768: {items: 3}, 992: {items: 4} }
     });
     
+ 
 })(jQuery);
 
 $(window).scroll(function () {
@@ -76,3 +77,19 @@ $('.accordion-header').click(function(){
 
 });
 
+$(document).ready(function() {
+    console.log('Document is ready.');
+    if ($('.custom-5-star-reviews-blocks-container-slider').length) {
+        console.log('Slick slider element found.');
+        $('.custom-5-star-reviews-blocks-container-slider').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            arrows: true,
+            prevArrow: '<button type="button" class="slick-prev slick-arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>',
+            nextArrow: '<button type="button" class="slick-next slick-arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>',
+        });
+    } else {
+        console.log('Slick slider element not found.');
+    }
+});

@@ -1,20 +1,24 @@
-
-<?php   
+<?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+// Include the PHPMailer library and mailing variables
 require("./mailing/mailfunction.php");
 
-    $name = $_POST["name"];
-    $phone = $_POST['phone'];
-    $email = $_POST["email"];
-    $message = $_POST["message"];
+// Retrieve form data
+$name = isset($_POST["name"]) ? $_POST["name"] : "";
+$phone = isset($_POST["phone"]) ? $_POST["phone"] : "";
+$email = isset($_POST["email"]) ? $_POST["email"] : "";
+$message = isset($_POST["message"]) ? $_POST["message"] : "";
 
-    $body = "<ul><li>Name: ".$name."</li><li>Phone: ".$phone."</li><li>Email: ".$email."</li><li>Message: ".$message."</li></ul>";
+// Construct email body
+$body = "<ul><li>Name: ".$name."</li><li>Phone: ".$phone."</li><li>Email: ".$email."</li><li>Message: ".$message."</li></ul>";
 
-    $status = mailfunction(" siblizzsolution@gmail.com", "Company", $body); //reciever
-    if($status)
-        echo '<center><h1>Thanks! We will contact you soon.</h1></center>';
-    else
-        echo '<center><h1>Error sending message! Please try again.</h1></center>';    
+// Send email
+$status = mailfunction("siblizzsolution@gmail.com", "SIBLIZZSOLUTIONS", $body); // Receiver email address and name
+if($status) {
+    echo '<center><h1>Thanks! We will contact you soon.</h1></center>';
+} else {
+    echo '<center><h1>Error sending message! Please try again.</h1></center>';
+}
 ?>
